@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Coffee Shop{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-amber-700 to-orange-800 rounded-3xl shadow-2xl overflow-hidden mb-12">
+        <div class="px-8 py-16 md:py-24 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+                Welcome to Coffee Shop
+            </h1>
+            <p class="text-xl md:text-2xl text-amber-100 mb-8 max-w-3xl mx-auto">
+                Discover our carefully curated selection of premium coffee products
+            </p>
+            <a href="{% url 'product_list' %}" class="inline-block bg-white text-amber-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-amber-100 transform hover:scale-105 transition duration-300 shadow-lg">
+                Browse Products
+            </a>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div class="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:scale-105 transition duration-300">
+            <div class="bg-amber-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Premium Quality</h3>
+            <p class="text-gray-600">Only the finest coffee beans from around the world</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:scale-105 transition duration-300">
+            <div class="bg-amber-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Fast Delivery</h3>
+            <p class="text-gray-600">Quick and reliable shipping to your doorstep</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg p-8 text-center transform hover:scale-105 transition duration-300">
+            <div class="bg-amber-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-amber-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/>
+                </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Customer Satisfaction</h3>
+            <p class="text-gray-600">100% satisfaction guaranteed or your money back</p>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="bg-white rounded-3xl shadow-xl p-12 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Ready to explore our collection?</h2>
+        <p class="text-gray-600 mb-6">Browse through our selection of premium coffee products</p>
+        <a href="{% url 'product_list' %}" class="inline-block bg-gradient-to-r from-amber-700 to-orange-800 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-amber-800 hover:to-orange-900 transform hover:scale-105 transition duration-300 shadow-lg">
+            View All Products
+        </a>
+    </div>
+</div>
+{% endblock %}

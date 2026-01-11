@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Product {% endblock %}
+
+{% block content %}
+
+<form  Action="{% url 'product_add' %}" method="post" enctype="multipart/form-data" class="max-w-3xl mx-auto">
+    {% csrf_token %}
+    <div class="fade-in max-w-3xl mx-auto bg-white p-8 rounded-3xl shadow-2xl">
+        <h1 class="text-4xl font-bold text-gray-800 mb-6">Add New Product</h1>
+
+        <!-- Product Name -->
+        <div class="mb-6">
+            <label for="name" class="block text-gray-700 font-semibold mb-2">Product Name</label>
+            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" required>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-6">
+            <label for="description" class="block text-gray-700 font-semibold mb-2">Description</label>
+            <textarea id="description" name="description" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" required></textarea>
+        </div>
+        <!-- Price -->
+        <div class="mb-6">
+            <label for="price" class="block text-gray-700 font-semibold mb-2">Price ($)</label>
+            <input type="number" step="0.01" id="price" name="price" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" required>  
+        </div>
+        <!-- Stock -->
+        <div class="mb-6">
+            <label for="stock" class="block text-gray-700 font-semibold mb-2">Stock Quantity</label>
+            <input type="number" id="stock" name="stock" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" required>
+        </div>      
+        <!-- available -->
+        <div class="mb-6">
+            <label for="available" class="block text-gray-700 font-semibold mb-2">Available</label>
+            <input type="checkbox" id="available" name="available" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+        </div>
+        <!-- url image from web-->
+        <div class="mb-6">
+            <label for="product_image" class="block text-gray-700 font-semibold mb-2">Image URL</label>
+            <input type="url" id="product_image" name="product_image" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" required>
+        </div>
+        <!-- Category -->
+        <div class="mb-8">
+            <label for="category" class="block text-gray-700 font-semibold mb-2">Category</label>
+            <select id="category" name="category" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" required>
+                <option value="" disabled selected>Select a category</option>
+                <option value="Espresso">Espresso</option>
+                <option value="Latte">Latte</option>
+                <option value="Cappuccino">Cappuccino</option>
+                <option value="Tea">Tea</option>
+                <option value="Pastry">Pastry</option>
+            </select>
+        </div> 
+        <!-- Submit Button -->
+        <div class="flex justify-end">
+            <button type="submit" class="bg-gradient-to-r from-amber-700 to-orange-800 text-white py-4 px-8 rounded-xl font-semibold text-lg hover:from-amber-800 hover:to-orange-900 transform hover:scale-105 transition duration-300 shadow-lg">
+                Add Product
+            </button>   
+        </div>
+    </div>
+</form>  
+
+{% endblock %}  
+    
