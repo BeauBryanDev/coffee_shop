@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "products",
-    "users"
+    "users",
+    "orders",
 ]
 
 MIDDLEWARE = [
@@ -125,4 +126,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'    
+
+# Custom User Model
+AUTH_USER_MODEL = 'users.CustomUser'    

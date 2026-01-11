@@ -1,0 +1,6 @@
+CommandError: Unable to serialize database: 'NoneType' object has no attribute '_meta'
+[Exception ignored in: <generator object cursor_iter at 0x7a828f0c1690>
+Traceback (most recent call last):
+  File "/home/beaunix/Documents/coffeeShop/coffee/lib/python3.13/site-packages/django/db/models/sql/compiler.py", line 2257, in cursor_iter
+    cursor.close()
+sqlite3.ProgrammingError: Cannot operate on a closed database.
