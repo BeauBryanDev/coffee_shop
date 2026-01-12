@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    "django_filters",
     "products",
     "users",
     "orders",
@@ -130,3 +132,20 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Custom User Model
 AUTH_USER_MODEL = 'users.CustomUser'    
+
+LOGIN_URL = 'login'
+
+REST_FRAMEWORK = {
+    
+    #Use Djando's standard `django.contrib.auth` permissions,
+    #or allow read-only access for unauthenticated users.
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+}

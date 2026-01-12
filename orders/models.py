@@ -1,11 +1,20 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models here.
 
 #create Order model to store order details
 class Order(models.Model):
     
+    # optional link to the authenticated user who placed the order
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='orders'
+    )
+
     order_number = models.CharField(max_length=20, unique=True)
     customer_name = models.CharField(max_length=100)
     customer_email = models.EmailField()
