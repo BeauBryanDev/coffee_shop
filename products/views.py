@@ -5,10 +5,13 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views.generic import  ListView, DetailView , TemplateView , FormView
 from django.core.paginator import Paginator
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
 from .models import Product
 from .forms import ProductForm
-
+from .serializers import ProductSerializer, CategorySerializer, ProductInCategorySerializer
 # Create your views here.
 
 class home(TemplateView):
@@ -49,7 +52,69 @@ class ProductFormView( FormView ):
         return super().form_valid(form)
     
     
+
+class ProductListAPI( APIView ):
     
+    authentication_classes  = []
+    permission_classes = []
+    
+    def get(self, request, format=None):
+        
+        id  = request.query_params.get('id', None)
+        if id is not None:
+            
+            try:
+                product = get_object_or_404(Product, pk=id)
+                serializer = ProductSerializer(product)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+        
+            except Product.DoesNotExist:
+                return Response({'error': 'Product not found.'}, status=status.HTTP_404_NOT_FOUND)
+        
+        products = Product.objects.all().order_by('-created_at')
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    def post(self, request, format=None):
+        
+        serializer = ProductSerializer(data=request.data)
+        
+        if serializer.is_valid():
+            
+            serializer.save()
+            
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+    def patch(self, request, format=None):
+        
+        id = request.data.get('id', None)
+        
+        if id is None:
+            return Response({'error': 'Product ID is required for update.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        product = get_object_or_404(Product, pk=id)
+        serializer = ProductSerializer(product, data=request.data, partial=True)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+    def delete(self, request, format=None):
+        
+        id = request.query_params.get('id', None)
+        
+        if id is None:
+            return Response({'error': 'Product ID is required for deletion.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        product = get_object_or_404(Product, pk=id)
+        product.delete()
+        
+        return Response({'message': 'Product deleted successfully.'}, status=status.HTTP_200_OK)
     
     
 """

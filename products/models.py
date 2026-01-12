@@ -22,3 +22,23 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.name} - ${self.price} - Stock: {self.stock}"
+    
+    
+class Category(models.Model):
+    
+    name = models.CharField(max_length=32, unique=True, verbose_name="Category Name")
+    description = models.TextField(max_length=255, blank=True, verbose_name="Category Description")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+    
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)
+    image_url = models.URLField(max_length=200, verbose_name="Image URL")
+    alt_text = models.CharField(max_length=100, blank=True, verbose_name="Alt Text")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Image for {self.product.name} - {self.alt_text}"

@@ -11,4 +11,4 @@ class ProductOrderForm(ModelForm):
     class Meta:
         model = ProductOrder
         fields = ['product_name', 'quantity', 'price_per_item']
-        # Note: 'order' is NOT included here - it's created in the view
+       

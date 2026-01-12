@@ -15,7 +15,7 @@ class Order(models.Model):
         related_name='orders'
     )
 
-    order_number = models.CharField(max_length=20, unique=True)
+    order_number = models.CharField(max_length=50, unique=True)
     customer_name = models.CharField(max_length=100)
     customer_email = models.EmailField()
     is_active = models.BooleanField(default=True)
