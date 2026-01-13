@@ -58,14 +58,14 @@ Create a `.env` file in the root directory of the project.
 DEBUG=True
 SECRET_KEY=django-insecure-)#jv7)!%!#zq(qc7dy6(x%u%g%xdk&%fg@_@+=7@cl!d!j652g
 ALLOWED_HOSTS=localhost,127.0.0.1
-DATABASE_URL=postgres://coffee_user:Happy_Coffee_Shop.1945@localhost:5433/coffee_shop_db
+DATABASE_URL=postgres://coffee_user:"Your Secret Password"@localhost:5433/coffee_shop_db
 ```
 
 ### 5. Database Setup (Docker)
 Run the following command to start the PostgreSQL container:
 
 ```bash
-docker run --name coffe_shop_db -e POSTGRES_PASSWORD=Happy_Coffee_Shop.1945 -p 5433:5432 -d postgres:15
+docker run --name coffe_shop_db -e POSTGRES_PASSWORD="Your Secret Password" -p 5433:5432 -d postgres:15
 ```
 
 Initialize the database user and permissions:
@@ -74,7 +74,7 @@ Initialize the database user and permissions:
 docker exec -it coffe_shop_db psql -U postgres
 
 # Run the following SQL commands:
-CREATE USER coffee_user WITH PASSWORD 'Happy_Coffee_Shop.1945';
+CREATE USER coffee_user WITH PASSWORD 'Your Secret Password';
 CREATE DATABASE coffee_shop_db OWNER coffee_user;
 GRANT ALL PRIVILEGES ON DATABASE coffee_shop_db TO coffee_user;
 ALTER USER coffee_user CREATEDB; -- Required to run Django tests
@@ -123,6 +123,73 @@ python manage.py test orders
 - **`orders/`**: Order processing, creating orders, and viewing order history.
 - **`templates/`**: HTML templates for the application.
 - **`manage.py`**: Django CLI utility.
+
+## Project Directory Structure    
+    
+├── CoffeeWebShop
+│   ├── asgi.py
+│   ├── docker-compose.yml
+│   ├── settings.py
+│   ├── templates
+│   ├── urls.py
+│   └── wsgi.py
+├── db.sqlite3
+├── manage.py
+├── notes.txt
+├── orders
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── migrations
+│   ├── models.py
+│   ├── templates
+│   │   └── orders
+│   │       ├── order_detail.html
+│   │       ├── order_list.html
+│   │       ├── product_order_form.html
+│   │    
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── products
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── __init__.py
+│   ├── migrations
+│   ├── serializers.py
+│   ├── templates
+│   │   └── products
+│   │       ├── add_product.html
+│   │       ├── home.html
+│   │       ├── inner_base.html
+│   │       ├── product_detail.html
+│   │       └── product_list.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+└── users
+    ├── admin.py
+    ├── apps.py
+    ├── forms.py
+    ├── __init__.py
+    ├── migrations
+    ├── templates
+    │   └── users
+    │       ├── login.html
+    │       ├── logout.html
+    │       └── register.html
+    ├── tests.py
+    ├── urls.py
+    └── views.py
+├── README.md
+├── requirement-dev.txt
+├── requirements-dev.txt
+├── requirements.txt
+├── templates
+│   └── base.html
+
 
 ## License
 MIT
