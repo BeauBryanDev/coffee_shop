@@ -7,6 +7,7 @@ class OrderForm(ModelForm):
         fields = ['order_number', 'customer_name', 'customer_email', 'is_active']
         
         
+        
 class ProductOrderForm(ModelForm):
     class Meta:
         model = ProductOrder

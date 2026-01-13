@@ -10,6 +10,7 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 media
+test_db.py
 
 #Ignore the staticfiles directory that is created when you run "collectstatic".
 notes.txt

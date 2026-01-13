@@ -13,11 +13,11 @@ prompt_toolkit==3.0.52
 ptyprocess==0.7.0
 pure_eval==0.2.3
 Pygments==2.19.2
+pillow==12.1.0
 sqlparse==0.5.5
 stack-data==0.6.3
 traitlets==5.14.3
 wcwidth==0.2.14
-pillow==12.1.0
 djangorestframework==3.16.1
 django-filter==25.2
-psycopg2-binary-2.9.11
+psycopg2-binary==2.9.11

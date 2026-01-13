@@ -21,7 +21,7 @@ class Product(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.name} - ${self.price} - Stock: {self.stock}"
+        return f"{self.name} - ${self.price:.2f} - Stock: {self.stock}"
     
     
 class Category(models.Model):
