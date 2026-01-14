@@ -126,6 +126,7 @@ python manage.py test orders
 
 ## Project Directory Structure    
     
+```
 ├── CoffeeWebShop
 │   ├── asgi.py
 │   ├── docker-compose.yml
@@ -190,6 +191,7 @@ python manage.py test orders
 ├── templates
 │   └── base.html
 
+```
 
 ## License
 MIT
